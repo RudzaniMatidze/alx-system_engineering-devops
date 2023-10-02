@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "$LAST_LINE" >> iacta
