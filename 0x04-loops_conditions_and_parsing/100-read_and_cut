@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Read the file /etc/passwd lineby line
+
+while IFS=: read -r username _ uid _ home _; do
+	# print the desired fileds separated by ':'
+	echo "$username:$uid:home"
+done < /ect/passwd
