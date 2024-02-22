@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-# Read the file /etc/passwd lineby line
+# Read the file /etc/passwd line by line
 
-while IFS=: read -r username _ uid _ home _; do
-	# print the desired fileds separated by ':'
-	echo "$username:$uid:home"
-done < /ect/passwd
+FILENAME="/etc/passwd"
+
+while read -r files
+do
+	echo "$files" | cut -d ":" -f1,3,6
+done < $FILENAME
