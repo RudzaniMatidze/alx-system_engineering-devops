@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 # Write a Bash script that gives you information about the school file.
 
-if [ -e $file ]; then
+file="./9-to_file_or_not_to_file"
+
+if [ -e "$file" ]; then
 	echo "school file exists"
 
-	if [ -s $file ]; then
+	if [ -s "$file" ]; then
 		echo "school fileis not empty"
 	else
 		echo "school file is empty"
 	fi
 
-	if [ -f $file ]; then
+	if [ -f "$file" ]; then
 		echo "school is a regular file"
 	fi
 else
