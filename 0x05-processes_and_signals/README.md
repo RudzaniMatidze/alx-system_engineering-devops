@@ -1,0 +1,12 @@
+# 0x05-processes_and_signals
+
+## TASKS
+
+| Filename | Requirement |
+| -------- | ----------- |
+| `0-what-is-my-pid` | `Bash script that displays its own PID.` |
+| `1-list_your_processes` | `Bash script that displays a list of currently running processes.` |
+| `2-show_your_bash_pid` | `Bash script that displays the PID, along with the process name, of processes whose name contain the word bash` |
+| `3-show_your_bash_pid_made_easy` | `Bash script that displays the PID, along with the process name, of processes whose name contain the word baSH.` |
+| `4-to_infinity_and_beyond` | `Bash script that displays To infinity and beyond indefinitely.` |
+| `5-dont_stop_me_now` | `Bash script that stops 4-to_infinity_and_beyond process.` |
