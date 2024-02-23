@@ -2,17 +2,11 @@
 # Displays 'to infinity and beyond' indefinitely with 'sleep 2' in between
 # each iteration 'I am invicible!!!' when receiving a SIGTERM signal
 
-sigterm_handler() {
-	echo "i am invincible!!!"
-	exit 0
-}
-
-trap sigterm_handler SIGTERM
-
 while true
 do
 	echo "To infinity and beyond"
 	sleep 2
+	trap 'echo "I am invincible!!!"' SIGTERM
 done
 
 exit 0
