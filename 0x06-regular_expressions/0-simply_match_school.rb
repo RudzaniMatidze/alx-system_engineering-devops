@@ -1,2 +1,4 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/school/).join
+if ARGV[0] =~ /School/
+  puts ARGV[0]
+end
