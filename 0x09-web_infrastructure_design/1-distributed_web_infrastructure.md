@@ -6,8 +6,6 @@
 A distributed web infrastructure that atttempts to reduce the traffic to the primary server by distributing some of the load to a replica server with the aid of a server responsible for balancing the load between the two servers (primary and replica).
 
 ## Specifics About This Infrastructure
-- **For every additional element, why you are adding it**
-<br/>
 
 - **What distribution algorithm your load balancer is configured with and how it works?**
 <br/>The HAProxy load balancer is configured with the *Round Robin* distribution algorithm. This algorithm works by using each server behind the load balancer in turns, according to their weights. It’s also probably the smoothest and most fair algorithm as the servers’ processing time stays equally distributed. As a dynamic algorithm, *Round Robin* allows server weights to be adjusted on the go.
@@ -27,7 +25,7 @@ A distributed web infrastructure that atttempts to reduce the traffic to the pri
 <br/>If the Primary MySQL database server is down, the entire site would be unable to make changes to the site (including adding or removing users). The server containing the load balancer and the application server connecting to the primary database server are also SPOFs.
 
 - **Security issues (no firewall, no HTTPS)**
-<br/>The data transmitted over the network isn't encrypted using an SSL certificate so hackers can spy on the network. There is no way of blocking unauthorized IPs since there's no firewall installed on any server.
+<br/>The infrastructure lacks essential security measures such as a firewall and HTTPS encryption. Without a firewall, the servers are more vulnerable to unauthorized access and malicious attacks. Additionally, not using HTTPS exposes sensitive data to interception and tampering.
 
 - **No monitoring**
-<br/>We have no way of knowing the status of each server since they're not being monitored.
+<br/>Without proper monitoring tools and processes in place, it becomes challenging to detect and respond to performance issues, security threats, or infrastructure failures in a timely manner. Monitoring is essential for maintaining uptime, optimizing performance, and ensuring the security of the infrastructure.
