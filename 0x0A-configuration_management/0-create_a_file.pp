@@ -1,8 +1,8 @@
-# Using Puppet, create a file in /t .mp.
+# Using Puppet, create a file in /tmp.
+
 file { '/tmp/school':
-    ensure  => 'file',
-    mode   => '0744',
-    group   => 'www-data',
-    owner    => 'www-data',
-    content => 'I love Puppet',
+  content =>'I love Puppet',
+  mode    => '0744',
+  owner   => 'www-data',
+  group   => 'www-data',
 }
