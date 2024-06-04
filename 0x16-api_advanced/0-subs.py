@@ -9,13 +9,22 @@ def number_of_subscribers(subreddit):
     A function that Queries the Reddit API and returns the total number
     of subscribers for a given subreddit.
     """
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {"User-Agent": "Mozilla/5.0"}
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code == 200:
-        data = response.json()
-        subscribers = data['data']['subscribers']
-        return subscribers
-    else:
-        return 0
 
+    if subreddit is None or not isinstance(subreddit, str):
+        print("None")
+
+    user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
+    params = {'limit': 10}
+    url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
+
+    response = get(url, headers=user_agent, params=params)
+    results = response.json()
+
+    try:
+        my_data = results.get('data').get('children')
+
+        for i in my_data:
+            print(i.get('data').get('title'))
+
+    except Exception:
+        print("None")
