@@ -1,26 +1,16 @@
 #!/usr/bin/python3
-"""Queries the Reddit API and returns the number of subscribers"""
-
-from requests import get, exceptions
+"""A function that query subscribers on a given Reddit subreddit."""
+import requests
 
 
 def number_of_subscribers(subreddit):
-    """
-    A function that queries the Reddit API and returns the total number
-    of subscribers for a given subreddit. If the subreddit is invalid,
-    returns 0.
-    """
-    if subreddit is None or not isinstance(subreddit, str):
+    """Returns the total number of subscribers on a given subreddit."""
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    headers = {
+        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+    }
+    response = requests.get(url, headers=headers, allow_redirects=False)
+    if response.status_code == 404:
         return 0
-
-    user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
-    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-
-    try:
-        response = get(url, headers=user_agent, allow_redirects=False)
-        response.raise_for_status()  # Raise an HTTPError for bad responses
-        results = response.json()
-        subscribers = results.get('data', {}).get('subscribers', 0)
-        return subscribers
-    except (exceptions.HTTPError, exceptions.RequestException, ValueError, KeyError):
-        return 0
+    results = response.json().get("data")
+    return results.get("subscribers")
